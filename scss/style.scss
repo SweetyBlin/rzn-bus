@@ -1,0 +1,993 @@
+// ПЕРЕМННЫЕ
+
+$desktop: 1440px;
+$laptop: 1024px;
+$tablet: 768px;
+$smart: 320px;
+$bar-width: 40px;
+$bar-height: 5px;
+$bar-spacing: 15px;
+$black: black;
+$blue: #1D1AB2;
+
+$tr: all 0.3s ease;
+
+//ОБНУЛЯЮЩИЕ СТИЛИ
+
+@font-face {
+  font-family: "Roboto Reg";
+  src: url("../media/fonts/Roboto-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-size: 16px;
+  font-family: "Roboto Reg";
+  color: $black;
+  cursor: default;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+ul {
+  list-style: none;
+}
+
+textarea {
+  outline: none;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// СТИЛИ КОНТЕЙНЕРОВ
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+[class*="__container"] {
+  display: flex;
+  max-width: $desktop;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.selected {
+  background: #afc9fa;
+}
+
+.btn {
+  padding: 10px 20px;
+  outline: 1px solid $blue;
+  font-weight: 600;
+  transition: $tr;
+  border-radius: 10px;
+  //align-self: flex-end;
+
+  &:hover {
+    color: white;
+    background: $blue;
+  }
+}
+
+.btn-red {
+  padding: 10px 20px;
+  outline: 1px solid #CA0C38FF;
+  font-weight: 600;
+  transition: $tr;
+  border-radius: 10px;
+  cursor: pointer;
+  //align-self: flex-end;
+
+  &:hover {
+    color: white;
+    background: #CA0C38FF;
+  }
+}
+
+.btn-green {
+  padding: 10px 20px;
+  outline: 1px solid #278918;
+  font-weight: 600;
+  transition: $tr;
+  border-radius: 10px;
+  cursor: pointer;
+  //align-self: flex-end;
+
+  &:hover {
+    color: white;
+    background: #278918;
+  }
+}
+
+// ОСНОВНЫЕ СТИЛИ
+
+header {
+  background: #FFFFFF;
+  width: 100%;
+}
+
+.header {
+  height: 110px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  background: white;
+
+  &__container {
+    padding: 0 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    background: white;
+  }
+
+  &__logo {
+    height: 90px;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu {
+    &__list {
+      display: flex;
+      gap: 40px;
+
+      &-item > a {
+        transition: $tr;
+        font-weight: 600;
+        font-size: 18px;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+
+.burger {
+  cursor: pointer;
+
+  display: none;
+  position: relative;
+  height: 30px;
+  width: 40px;
+  flex: 0 0 auto;
+  z-index: 50;
+
+  &__line,
+  &__line::after,
+  &__line::before {
+    width: $bar-width;
+    height: $bar-height;
+  }
+
+  &__line {
+    display: block;
+    position: absolute;
+    top: ($bar-height * -0.5);
+    //position: relative;
+    transform: translateY($bar-spacing);
+    background: $black;
+    transition: all 0ms 300ms;
+  }
+
+  &__line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: $bar-spacing;
+    background: $black;
+    transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  &__line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: $bar-spacing;
+    background: $black;
+    transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .burger.animate > .burger__line {
+    background: white;
+  }
+
+  .burger.animate > .burger__line::after {
+    background: white;
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
+  }
+
+  .burger.animate > .burger__line::before {
+    background: white;
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);;
+  }
+}
+
+///////////////////////////////////////////////////////
+
+.booking {
+  &__title {
+    text-align: center;
+  }
+
+  &__container {
+    flex-direction: column;
+    min-height: 400px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 15px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+
+  }
+
+  .graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__result {
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 30px;
+      margin-bottom: 20px;
+
+      & > * {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        outline: 1px solid gray;
+        transition: $tr;
+
+        &:focus, &:hover {
+          outline: 1px solid blue;
+        }
+      }
+    }
+  }
+
+  &__description {
+    max-width: 600px;
+    text-align: center;
+  }
+}
+
+///////////////////////////////////////////////////////////
+
+.confidence {
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 150px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+}
+
+////////////////////////////////////////////////////////////////
+
+.search {
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__form {
+    display: flex;
+    gap: 10px;
+
+    & > * {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    & > *:not(:last-child) {
+      outline: 1px solid gray;
+      transition: $tr;
+      width: 100%;
+
+      &:focus, &:hover {
+        outline: 1px solid blue;
+      }
+    }
+
+    & button {
+      border: 1px solid $blue;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: $tr;
+
+      &:hover {
+        background: $blue;
+        color: white;
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////
+
+.promo {
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  .card {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: $tr;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+
+    &:hover {
+      outline: 1px solid $blue;
+      transform: scale(1.01);
+    }
+
+    &__photo > img {
+      border-radius: 10px;
+    }
+
+    &__btn {
+      font-weight: 600;
+      transition: $tr;
+      //align-self: flex-end;
+      margin-top: auto;
+
+      &:hover {
+        color: blue;
+      }
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////
+
+.subscription {
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    width: 100%;
+
+    & > * {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    & > *:not(:last-child) {
+      outline: 1px solid gray;
+      transition: $tr;
+      width: 100%;
+
+      &:focus, &:hover {
+        outline: 1px solid blue;
+      }
+    }
+
+    & button {
+      border: 1px solid $blue;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: $tr;
+
+      &:hover {
+        background: $blue;
+        color: white;
+      }
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////////
+
+.footer {
+  margin-bottom: 20px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__phone {
+    white-space: nowrap;
+    font-weight: 600;
+    transition: $tr;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  .menu {
+    &__list {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &-item > a {
+        transition: $tr;
+        font-weight: 600;
+        font-size: 18px;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////
+
+.search-result {
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  &__button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__item, &__item-first {
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+
+  &__table, &__table-header {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+
+    & th, & td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    &-row:first-child {
+      background-color: #f2f2f2
+    }
+
+    &-row:hover {
+      background-color: #f2f2f2
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////
+
+.booking-page {
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  &__tables {
+    margin-bottom: 20px;
+    overflow-x: auto;
+  }
+
+  &__table, &__table-header {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+
+    & th, & td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    &-row:first-child {
+      background-color: #f2f2f2
+    }
+
+    &-row:hover {
+      background-color: #f2f2f2
+    }
+  }
+
+  &__users-title {
+    margin-bottom: 30px;
+  }
+
+  &__final-cost {
+    text-align: end;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+
+    & > * {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+
+      & input {
+        outline: 1px solid gray;
+        transition: $tr;
+        width: 100%;
+
+        &:focus, &:hover {
+          outline: 1px solid blue;
+        }
+      }
+
+      & > * {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        transition: $tr;
+        width: 100%;
+      }
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////
+
+.book {
+  margin: 30px 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+  }
+
+  &__text {
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  &__btn {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  &__drive, &__pass {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .booking-drive__tables, .book-pass__tables {
+    margin-bottom: 20px;
+    overflow-x: auto;
+  }
+
+  .booking-drive__table, .book-pass__table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+
+    & th, & td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    &-row:first-child {
+      background-color: #f2f2f2
+    }
+
+    &-row:hover {
+      background-color: #f2f2f2
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////
+
+.seat {
+  margin: 30px 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+
+  }
+
+  &__table table {
+    margin-bottom: 30px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+
+    & th, & td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    & tr:first-child {
+      background-color: #f2f2f2
+    }
+
+    &-row:hover {
+      background-color: #f2f2f2
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    gap: 50px;
+    width: 300px;
+
+    & > * {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__place {
+    height: 50px;
+    width: 50px;
+    background: #c8c8c8;
+    border-radius: 4px;
+    transition: $tr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+
+    &:hover:not(.blocked) {
+      background: #278918;
+      color: #FFFFFF;
+    }
+
+    &:not(.blocked) {
+      cursor: pointer;
+    }
+  }
+}
+
+.blocked {
+  cursor: not-allowed;
+}
+
+/////////////////////////////////////////////////////////////
+
+.login, .reg {
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__login-href {
+    color: $blue;
+    text-decoration: underline;
+  }
+
+  &__form {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 10px;
+
+    & button {
+      font-size: 18px;
+    }
+
+    & > input {
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      outline: 1px solid gray;
+      transition: $tr;
+
+      &:focus, &:hover {
+        outline: 1px solid blue;
+      }
+
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////
+
+.profile {
+
+  &__container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+  &__book {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  &__logout {
+    //text-align: center;
+  }
+
+  .profile__tables {
+    margin-bottom: 20px;
+    overflow-x: auto;
+  }
+
+  .profile__table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+
+    & th, & td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    &-row:first-child {
+      background-color: #f2f2f2
+    }
+
+    &-row:hover {
+      background-color: #f2f2f2
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////
+
+@media (max-width: $tablet) {
+  .header {
+    &__logo {
+      height: 60px;
+    }
+
+    &__menu {
+      position: fixed;
+      top: 0;
+      transform: translateX(100%);
+      left: 0;
+      width: 100%;
+      background: #FFFFFF;
+      transition: $tr;
+      z-index: 1;
+      height: 100vh;
+
+      &.animate {
+        transform: translateY(0%);
+      }
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__list {
+        &-item, &-item > a {
+          transition: $tr;
+          font-weight: 600;
+          font-size: 24px;
+          color: black;
+
+          &:last-child {
+            margin-top: 50px;
+          }
+        }
+
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+
+      }
+    }
+
+  }
+
+  .burger {
+    display: block;
+  }
+  .search {
+    &__form {
+      //flex-direction: column;
+      flex-wrap: wrap;
+
+      & button {
+        width: 100%;
+      }
+    }
+  }
+  .subscription {
+    &__form {
+      max-width: 400px;
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  .booking-page {
+    &__inputs {
+      flex-direction: column;
+    }
+
+    &__final-cost, &__users-title {
+      text-align: center;
+    }
+
+    &__submit {
+      flex-direction: column;
+    }
+  }
+
+  .book {
+    &__info {
+      font-size: 20px;
+    }
+  }
+
+  .seat {
+    &__bottom {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__submit-btn {
+      text-align: center;
+    }
+
+    &__gallery {
+      align-items: center;
+      justify-content: space-evenly;
+      gap: 50px;
+
+      & > * {
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+

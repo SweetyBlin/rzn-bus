@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="shortcut icon" href="./media/images/logos/logo.png" type="image/x-icon">
+  <script src="./media/js/script.js" async defer></script>
+  <title>RZN Bus</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <header class="header test-0-header">
+    <div class="header__container">
+      <a href="index.html" class="test-0-logo header__logo">
+        <img class="header__logo-img" src="./media/images/logos/logo.png" alt="">
+      </a>
+      <nav class="header__menu menu">
+        <ul class="menu__list">
+          <li class="menu__list-item ">
+            <a href="" class="menu__list-link test-0-nav-1">Акции</a>
+          </li>
+          <li class="menu__list-item ">
+            <a href="" class="menu__list-link test-0-nav-2">Поиск</a>
+          </li>
+          <li class="menu__list-item ">
+            <a href="" class="menu__list-link test-0-nav-3">Регистрация на рейс</a>
+          </li>
+          <li class="menu__list-item ">
+            <a href="login.html" class="menu__list-link test-0-nav-4">Личный кабинет</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="burger"><span class="burger__line"></span></button>
+    </div>
+  </header>
+
+  <div class="booking-page">
+    <div class="booking-page__container">
+      <h2 class="booking-page__title">Бронирование</h2>
+      <div class="booking-page__body">
+        <div class="booking-page__tables">
+          <table class="booking-page__table">
+            <tr class="booking-page__table-row">
+              <th class="booking-page__table-col">Номер рейса</th>
+              <th class="booking-page__table-col">Название города назначения</th>
+              <th class="booking-page__table-col">Название автобусной остановки для выезда</th>
+              <th class="booking-page__table-col">Дата выезда</th>
+              <th class="booking-page__table-col">Время выезда</th>
+              <th class="booking-page__table-col">Название города назначения</th>
+              <th class="booking-page__table-col">Название автобусной остановки назначения</th>
+              <th class="booking-page__table-col">Время прибытия</th>
+              <th class="booking-page__table-col">Стоимость</th>
+            </tr>
+            <tr class="booking-page__table-row">
+              <td class="booking-page__table-col test-5-fc">DSFF234</td>
+              <td class="booking-page__table-col test-5-fcity">Рязань</td>
+              <td class="booking-page__table-col test-5-from">Рязань-1</td>
+              <td class="booking-page__table-col test-5-dd">12:00</td>
+              <td class="booking-page__table-col test-5-dt">23.02.2023</td>
+              <td class="booking-page__table-col test-5-tcity">Тула</td>
+              <td class="booking-page__table-col test-5-to">Тула-1</td>
+              <td class="booking-page__table-col test-5-at">22:00</td>
+              <td class="booking-page__table-col test-5-fp">5000 рублей</td>
+            </tr>
+            <tr class="booking-page__table-row">
+              <td class="booking-page__table-col test-5-fc">DSFF234</td>
+              <td class="booking-page__table-col test-5-fcity">Рязань</td>
+              <td class="booking-page__table-col test-5-from">Рязань-1</td>
+              <td class="booking-page__table-col test-5-dd">12:00</td>
+              <td class="booking-page__table-col test-5-dt">23.02.2023</td>
+              <td class="booking-page__table-col test-5-tcity">Тула</td>
+              <td class="booking-page__table-col test-5-to">Тула-1</td>
+              <td class="booking-page__table-col test-5-at">22:00</td>
+              <td class="booking-page__table-col test-5-fp">5000 рублей</td>
+            </tr>
+          </table>
+        </div>
+        <div class="booking-page__users">
+          <h2 class="booking-page__users-title">Пассажиры</h2>
+          <div class="booking-page__user">
+            <form action="booking_management.html" class="booking-page__form">
+              <div class="booking-page__inputs">
+                <input class="test-5-name" type="text" name="name" id="name" placeholder="Имя">
+                <input class="test-5-last" type="text" name="surname" id="surname" placeholder="Фамилия">
+                <input class="test-5-dob" type="date" name="date" id="date" placeholder="Дата рождения">
+                <input class="test-5-doc" type="number" name="passport" id="passport" placeholder="Номер документа">
+              </div>
+              <div class="booking-page__options">
+                <button type="button" class="test-5-remove btn-red">Удалить</button>
+                <button type="button" class="test-5-add btn">Добавить</button>
+              </div>
+              <div class="booking-page__submit">
+                <span class="booking-page__final-cost test-5-price">Финальная стоимость: 10000 рублей</span>
+                <button type="submit" class="test-5-book btn-green">Подтвердить</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer__container">
+      <span class="footer__phone test-0-phone">8 (4912) 111-111</span>
+      <nav class="footer__menu menu">
+        <ul class="menu__list">
+          <li class="menu__list-item">
+            <a href="index.html" class="menu__list-link">Home</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="login.html" class="menu__list-link">Login</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="register.html" class="menu__list-link">Sign up</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="/contact" class="menu__list-link">Contact</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="/news" class="menu__list-link">News</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="/return" class="menu__list-link">Return</a>
+          </li>
+          <li class="menu__list-item">
+            <a href="/feedback" class="menu__list-link">Feedback</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+
+</div>
+</body>
+</html>
